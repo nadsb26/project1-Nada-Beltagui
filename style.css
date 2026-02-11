@@ -1,0 +1,187 @@
+/* universal selector = * */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f5f5f5;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    /* establishes the container as a ref point for child elements*/
+    position: relative;
+    max-width: 1000px;
+    width: 90%;
+}
+
+.price-container {
+    position: absolute;
+    top: -130px; /* moves the price container above the main screen */
+    right: 100px;
+}
+
+.price-display {
+    background: ffe3e2;
+    border: 4px solid #b18597;
+    border-radius: 20px; /*rounding corners*/
+    padding: 15px 40px;
+    font-size: 40px;
+    font-family: "Roboto Mono", monospace;
+    color: #382b22;
+    position: relative;
+}
+
+.vl1 {
+    position: absolute;
+    bottom: -40px;
+    left: 30%;
+    width: 10px;
+    height: 40px;
+    background: #b18597;
+}
+
+.vl2 {
+    position: absolute;
+    bottom: -40px;
+    right: 30%;
+    width: 10px;
+    height: 40px;
+    background: #b18597;
+}
+
+/* main screen */
+.screen-container {
+    background: #ffe3e2;
+    border: 4px solid #b18597;
+    border-radius: 40px;
+    padding: 20px;
+    box-shadow: 5px 5px #6d686a;
+}
+
+.title-bar {
+    font-weight: 600;
+    font-size: 20px;
+    font-family: "Roboto Mono", monospace;
+    color: #382b22;
+    background: #fff0f0;
+    border: 4px solid #b18597;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px;
+}
+
+.video-container {
+    background: #fff0f0;
+    border: 4px solid #b18597;
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    margin: 5px;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    
+    background: #ffe3e2;
+    border: 4px solid #b18597;
+    border-radius: 30px;
+    box-shadow: 5px 5px #6d686a;
+
+    padding: 20px 50px 40px;
+    max-width: 1200px;
+    width: calc(100% + 100px); 
+
+    margin-top: -15px; 
+    margin-left: -50px; 
+}
+
+/* the css code for the buttons is from the following link: https://uiverse.io/Madflows/terrible-catfish-72 */
+/* i made some of my own changes to match the theme i was going for as well as adjusting text alignment and sizes of the buttons*/
+.nav-button {
+    width: 200px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-family: inherit;
+    font-size: 15px;
+}
+
+.nav-button { 
+    font-weight: 600;
+    width: 200px;
+    text-align: center;
+    color: #382b22;
+    font-family: "Roboto Mono", monospace;
+    padding: 1.25em 2em;
+    background: #fff0f0;
+    border: 2px solid #b18597;
+    border-radius: 0.75em;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    -webkit-transition: background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.nav-button::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f9c4d2;
+    border-radius: inherit;
+    -webkit-box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+    box-shadow: 0 0 0 2px #b18597, 0 0.625em 0 0 #ffe3e2;
+    -webkit-transform: translate3d(0, 0.75em, -1em);
+    transform: translate3d(0, 0.75em, -1em);
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-transform 150ms cubic-bezier(0, 0, 0.58, 1), -webkit-box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+
+.nav-button:hover {
+    background: #ffe9e9;
+    -webkit-transform: translate(0, 0.25em);
+    transform: translate(0, 0.25em);
+}
+
+.nav-button:hover::before {
+    -webkit-box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+    box-shadow: 0 0 0 2px #b18597, 0 0.5em 0 0 #ffe3e2;
+    -webkit-transform: translate3d(0, 0.5em, -1em);
+    transform: translate3d(0, 0.5em, -1em);
+}
+
+.nav-button:active {
+    background: #ffe9e9;
+    -webkit-transform: translate(0em, 0.75em);
+    transform: translate(0em, 0.75em);
+}
+
+.nav-button:active::before {
+    -webkit-box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+    box-shadow: 0 0 0 2px #b18597, 0 0 #ffe3e2;
+    -webkit-transform: translate3d(0, 0, -1em);
+    transform: translate3d(0, 0, -1em);
+}
+/*till here*/

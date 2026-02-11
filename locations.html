@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width">
+        <title> </title>
+        <link rel="stylesheet" type="text/css" href="locations.css"/>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Playfair+Display:wght@500&family=Playwrite+NZ+Basic+Guides&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <!-- price display: to make it look more like a cash register -->
+            <div class="price-container">
+                <div class="vl1"></div>
+                <div class="vl2"></div>
+
+                <div class="price-display">$5.00</div>
+            </div>
+
+            <!-- main screen -->
+            <div class="screen-container">  
+                <div class="video-container">
+                    <div class="carousel-slide active">
+                            <video controls class="location-video">
+                                <source src="videos/sexton.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="carousel-slide">
+                            <video controls class="location-video">
+                                <source src="videos/c2.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="carousel-slide">
+                            <video controls class="location-video">
+                                <source src="videos/convenience.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                </div>
+            </div>
+                <!-- buttons to navigate the website-->
+            <div class="button-container">
+                <!-- left arrow button for carousel -->
+                <button class= "nav-button" id="prevBtn"> < </button>
+
+                <a href="index.html" class="nav-button">Video</a>
+                <a href="characters.html" class="nav-button">Characters</a>
+                <!-- <a href="about.html" class="nav-button">About</a> -->
+
+                <!-- right arrow button for carousel -->
+                <button class= "nav-button" id="nextBtn"> > </button>
+            </div>
+        </div>
+            
+
+            <!-- location info shown in a 'reciept '-->
+            <div class="receipt-container">
+                <div class="receipt">
+                    <div class="receipt-header">
+                        <h2>RECEIPT</h2>
+                        <div class="receipt-line"></div>
+                    </div>
+
+                    <!-- location info sections -->
+                    <div class="location-info active" id="info-0">
+                        <h3>Sexton Square</h3>
+                        <p>The Sexton Square, usually referred to as <em>the palms</em> by students. It's right at the center of the NYU Abu Dhabi campus and the place to be when the weather is nice.</p>
+                        <p>Chilling under the shade of the palm trees, be it alone with your favorite book or accompanied by friends and campus cats, is like an NYU Abu Dhabi ritual.</p>
+                        <p class="scene-note">Featured in the second scene, when Nada runs into Alexa as she's walking to C2.</p>
+                    </div>
+
+                    <div class="location-info" id="info-1">
+                        <h3>Campus Center</h3>
+                        <p>As the name suggests, Campus Center is the focal point of NYU Abu Dhabi. Students usually refer to this one as C2!</p>
+                        <p>The building hosts many offices, meeting rooms, lounges, study spaces, our mailroom, as well as so much more. Most importantly (at least in the context of our film), on the first floor of the Campus Center, you'll find the Convenience Store.</p>
+                        <p class="scene-note">This is where Nada awkwardly avoided Maitha on her way up the stairs to the Convenience Store.</p>
+                    </div>
+
+                    <div class="location-info" id="info-2">
+                        <h3>Convenience Store</h3>
+                        <p>Commonly referred to as CS, the Convenience Store is, well, the most convenient spot for you to buy all your essentials on campus.</p>
+                        <p>The Convenience Store accepts Campus Dirhams, Falcon Dirhams, and <em>real</em> money, cash and credit. From snacks to notebooks to chargers, the convenience store is open everyday for students (and visitors) to purchase whatever they may need.</p>
+                        <p class="scene-note">This is where Nada was trying to get throughout our film. It is also where she awkwardly ran into Maitha, a second time.</p>
+                    </div>
+
+                    <!-- this is for aesthetic purposes to make it look more receipt like-->
+                    <div class="receipt-footer">
+                        <div class="receipt-line"></div>
+                        <p class="total">LOCATION <span id="location-number">1</span> OF 3</p>
+                        <div class="barcode">
+                            <img src="barcode.png" width="300">
+                        </div>
+                        <p class="note">HAVE A NICE DAY</p>
+                    </div>
+                </div>
+            </div>
+        <script>
+            let currentSlide = 0; // used to keep track of which slide is currently displayed
+            const slides = document.querySelectorAll('.carousel-slide'); // selects all carousel slide elements
+            const infos = document.querySelectorAll('.location-info'); // selects all the location info elements shown in the reciept 
+
+            // nav buttons:
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+
+            // location counter in the footer
+            const locationNumber = document.getElementById('location-number');
+
+            // displays the slide and receipt info that match the given index
+            function showSlide(index) {
+                // by default, active is given to location 1
+                // this code removes the active class from all slides & infos
+                slides.forEach(slide => slide.classList.remove('active'));
+                infos.forEach(info => info.classList.remove('active'));
+
+                // this code adds the active class to the selected slide & macthing info
+                slides[index].classList.add('active');
+                infos[index].classList.add('active');
+
+                locationNumber.textContent = index + 1; // update the receipt footer counter
+            }
+
+            // moving to next slide (increments index counter)
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length; // modulo is used so it loops back to the first slide when reaching the end
+                showSlide(currentSlide);
+            }
+
+            // moving to next slide (decrements index counter)
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            // event listener for when the buttons are pressed to 'run' the nxt and prv slide functions -> updating index -> updating info shown
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width">
+        <title> </title>
+        <link rel="stylesheet" type="text/css" href="characters.css"/>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Playfair+Display:wght@500&family=Playwrite+NZ+Basic+Guides&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+            <!-- price display: to make it look more like a cash register -->
+            <div class="price-container">
+                <div class="vl1"></div>
+                <div class="vl2"></div>
+
+                <div class="price-display">$5.00</div>
+            </div>
+
+            <!-- main screen -->
+            <div class="screen-container">
+                
+                <div class="image-container">
+                    <div class="stick-container" id="container1">
+                        <img src="characters/stick1.png" class="stick" id="stick1">
+                        <img src="bubble.png" class="speech-bubble" id="bubble1">
+                        <p class="speech-text" id="text1">hello! i'm maitha, i'm a sophomore majoring in BOS!</p>
+                    </div>
+
+                    <div class="stick-container" id="container2">
+                        <img src="characters/stick2.png" class="stick" id="stick2">
+                        <img src="bubble.png" class="speech-bubble" id="bubble2">
+                        <p class="speech-text" id="text2">hi! i'm meera! i'm a sophomore majoring in BOS.</p>
+                    </div>
+
+                    <div class="stick-container" id="container3">
+                        <img src="characters/stick3.png" class="stick" id="stick3">
+                        <img src="bubble.png" class="speech-bubble" id="bubble3">
+                        <p class="speech-text" id="text3">hello! i'm nada, i'm a junior, majoring in CS!</p>
+                    </div>
+
+                    <div class="stick-container" id="container4">
+                        <img src="characters/stick4.png" class="stick" id="stick4">
+                        <img src="bubble.png" class="speech-bubble" id="bubble4">
+                        <p class="speech-text" id="text4">hey! i'm alexa and i'm a film major. i'm a freshman!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- buttons to navigate the website-->
+            <div class="button-container">
+                <a href="index.html" class="nav-button">Video</a>
+                <a href="locations.html" class="nav-button">Locations</a>
+                <!-- <a href="about.html" class="nav-button">About</a> -->
+            </div>
+        </div>
+    <script>
+        //get all stick figures
+        const stick1 = document.getElementById('stick1');
+        const stick2 = document.getElementById('stick2');
+        const stick3 = document.getElementById('stick3');
+        const stick4 = document.getElementById('stick4');
+
+        //get all speech bubbles
+        const bubble1 = document.getElementById('bubble1');
+        const bubble2 = document.getElementById('bubble2');
+        const bubble3 = document.getElementById('bubble3');
+        const bubble4 = document.getElementById('bubble4');
+
+        //get all speech texts
+        const text1 = document.getElementById('text1');
+        const text2 = document.getElementById('text2');
+        const text3 = document.getElementById('text3');
+        const text4 = document.getElementById('text4');
+
+        // function that toggles the speech bubbles
+        function toggleSpeech(bubble, text) {
+            // if the bubble is currently hidden, it will show it
+            if (bubble.style.display === 'none' || bubble.style.display === '') {
+                bubble.style.display = 'block';
+                text.style.display = 'block';
+            } else {
+                // otherwise, it will hide again
+                bubble.style.display = 'none';
+                text.style.display = 'none';
+            }
+        }
+
+        // click event listeners (when user clicks on the stick figures, it calls the toggle function)
+        stick1.addEventListener('click', function() {
+            toggleSpeech(bubble1, text1);
+        });
+
+        stick2.addEventListener('click', function() {
+            toggleSpeech(bubble2, text2);
+        });
+
+        stick3.addEventListener('click', function() {
+            toggleSpeech(bubble3, text3);
+        });
+
+        stick4.addEventListener('click', function() {
+            toggleSpeech(bubble4, text4);
+        });
+    </script>  
+    </body>
+</html>
